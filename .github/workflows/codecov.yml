@@ -33,9 +33,8 @@ jobs:
       - name: Test with python unittest
         run: |
           pip install coverage
-          coverage run --omit test*.py -m unittest discover
-          coverage report --fail-under=80
-          coverage html
+          python -m coverage run --omit test*.py -m unittest discover
+          python -m coverage report --fail-under=80
       - name: Upload cod cod
         uses: codecov/codecov-action@v1
         with:
