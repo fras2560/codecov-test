@@ -35,6 +35,7 @@ jobs:
           pip install coverage
           python -m coverage run --omit test*.py -m unittest discover
           python -m coverage report --fail-under=70
+          python -m coverage xml
       - name: Upload cod cod
         uses: codecov/codecov-action@v1
         with:
