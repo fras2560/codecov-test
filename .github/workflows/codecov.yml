@@ -30,7 +30,16 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Test with python unittest
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          pip install coverage
+          coverage run --omit test*.py -m unittest discover
+          coverage report --fail-under=80
+          coverage html
+      - name: Upload cod cod
+        uses: codecov/codecov-action@v1
+        with:
+          flags: unittests # optional
+          name: testing
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
